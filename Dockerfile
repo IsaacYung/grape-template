@@ -8,10 +8,17 @@ COPY Gemfile.lock /my-application/Gemfile.lock
 WORKDIR /my-application
 
 RUN apk --no-cache add mariadb-dev && \
-    apk --no-cache add --virtual build-dependencies linux-headers ruby-dev libxml2-dev libxslt-dev build-base && \
-    bundle config build.nokogiri --use-system-libraries && \
-    bundle install --jobs=4 --retry=3 $BUNDLE_ARGS && \
-    apk del build-dependencies
+    apk --no-cache add --virtual \
+    build-dependencies \
+    linux-headers \
+    ruby-dev \
+    libxml2-dev \
+    libxslt-dev \
+    build-base
+
+RUN bundle config build.nokogiri --use-system-libraries
+RUN bundle install --jobs=4 --retry=3 $BUNDLE_ARGS
+RUN apk del build-dependencies
 
 COPY . /my-application
 
