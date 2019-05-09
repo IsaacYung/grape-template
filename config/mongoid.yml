@@ -1,0 +1,30 @@
+development:
+  clients:
+    default:
+      database: my_application_dev
+      hosts:
+        - mongo:27017
+
+test:
+  clients:
+    default:
+      database: my_application_test
+      hosts:
+        - mongo:27017
+
+integration:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+
+sandbox:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+    replica_set:
+      uri: <%= ENV['MONGODB_URI_REPLICA'] %>

@@ -1,0 +1,48 @@
+version: '3'
+services:
+  api:
+    build:
+      context: .
+      args:
+        BUNDLE_ARGS: ""
+    entrypoint: bundle exec
+    command: [unicorn, -c, unicorn.rb]
+    environment:
+      RACK_ENV: development
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: my_application
+      RABBITMQ_PASS: my_application
+      RABBITMQ_POOL_SIZE: 10
+      RABBITMQ_POOL_TIMEOUT: 10
+      RDS_USERNAME: root
+      RDS_HOSTNAME: mysql
+      RDS_DB_NAME: my_application_dev
+      RDS_PASSWORD: root
+
+    ports:
+      - "3000:8080"
+  #   depends_on:
+  #     - mysql
+  #     - mongo
+  #     - rabbitmq
+  # mysql:
+  #   image: mysql:5
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "root"
+  #     MYSQL_DATABASE: "my_application_dev"
+  # mongo:
+  #   image: mongo:3.7.9
+  #   ports:
+  #     - "27017:27017"
+  # rabbitmq:
+  #   image: rabbitmq:3.6.5-management
+  #   hostname: "rabbit-host"
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: my_application
+  #     RABBITMQ_DEFAULT_PASS: my_application
