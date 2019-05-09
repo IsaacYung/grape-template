@@ -5,7 +5,9 @@ module MyApplication
 
       resource :status do
         get do
-          return { status: :ok }
+          status = OpenStruct.new({ status: :ok })
+
+          present status, with: Presenters::Health
         end
       end
     end

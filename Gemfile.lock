@@ -46,6 +46,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -166,6 +167,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.1)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -236,7 +238,9 @@ PLATFORMS
 DEPENDENCIES
   actionpack
   amatch
+  bunny
   bunny-mock
+  connection_pool
   factory_girl
   fuubar
   grape
@@ -251,6 +255,7 @@ DEPENDENCIES
   rack
   rack-test
   rake
+  redis
   request_store
   require_all
   rest-client

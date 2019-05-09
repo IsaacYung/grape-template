@@ -14,8 +14,8 @@ require 'roar/representer'
 require 'roar/json'
 require 'roar/json/hal'
 require 'amatch'
-# require 'bunny'
-# require 'connection_pool'
+require 'bunny'
+require 'connection_pool'
 
 Bundler.require
 Bundler.require(:default, ENV['RACK_ENV'] || :development)

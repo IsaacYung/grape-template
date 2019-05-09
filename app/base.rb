@@ -1,5 +1,3 @@
-
-
 module API
   class Base < Grape::API
     include MyApplication

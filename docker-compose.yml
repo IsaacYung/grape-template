@@ -22,10 +22,10 @@ services:
 
     ports:
       - "3000:8080"
-  #   depends_on:
-  #     - mysql
-  #     - mongo
-  #     - rabbitmq
+    depends_on:
+      - mongo
+      - rabbitmq
+      # - mysql
   # mysql:
   #   image: mysql:5
   #   ports:
@@ -33,16 +33,16 @@ services:
   #   environment:
   #     MYSQL_ROOT_PASSWORD: "root"
   #     MYSQL_DATABASE: "my_application_dev"
-  # mongo:
-  #   image: mongo:3.7.9
-  #   ports:
-  #     - "27017:27017"
-  # rabbitmq:
-  #   image: rabbitmq:3.6.5-management
-  #   hostname: "rabbit-host"
-  #   ports:
-  #     - "5672:5672"
-  #     - "15672:15672"
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: my_application
-  #     RABBITMQ_DEFAULT_PASS: my_application
+  mongo:
+    image: mongo:3.7.9
+    ports:
+      - "27017:27017"
+  rabbitmq:
+    image: rabbitmq:3.6.5-management
+    hostname: "rabbit-host"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: my_application
+      RABBITMQ_DEFAULT_PASS: my_application

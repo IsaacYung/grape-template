@@ -25,4 +25,7 @@ if %w[sandbox production].include? ENV['RACK_ENV']
   end
 end
 
+MyApplication::Consumers::Listener.init
+MyApplication::Config::RabbitMQ::Queue.config
+
 run API::Base
