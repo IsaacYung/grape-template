@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler'
 require 'rack'
 require 'bundler/setup'
@@ -20,10 +22,10 @@ require 'connection_pool'
 Bundler.require
 Bundler.require(:default, ENV['RACK_ENV'] || :development)
 
-ROOT = Pathname.new(File.expand_path('../', __FILE__))
+ROOT = Pathname.new(File.expand_path(__dir__))
 
 require_all 'initializers'
 require_all 'config'
 require_all 'app'
 
-RestClient.log = 'stdout' if 'development' == ENV['RACK_ENV']
+RestClient.log = 'stdout' if ENV['RACK_ENV'] == 'development'

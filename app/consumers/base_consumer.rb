@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Consumers
     class BaseConsumer < Bunny::Consumer
@@ -5,6 +7,7 @@ module MyApplication
 
       def handle?(routing_key)
         return false if routing_key.nil?
+
         @routing_keys.each do |key|
           if key == routing_key
             logger.info "sorting_hat_handle_with #{consumer_tag}"

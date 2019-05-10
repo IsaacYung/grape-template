@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Config
     module RabbitMQ
@@ -8,7 +10,7 @@ module MyApplication
           POOL_CONFIG = {
             size: ENV['RABBITMQ_POOL_SIZE'].to_i,
             timeout: ENV['RABBITMQ_POOL_TIMEOUT'].to_i
-          }
+          }.freeze
 
           def create
             @pool = ConnectionPool.new(POOL_CONFIG) do
@@ -33,6 +35,7 @@ module MyApplication
 
           def pool
             raise ArgumentError, 'missing a block' unless block_given?
+
             rabbit_pool.with do |conn|
               yield conn
             end
@@ -43,6 +46,7 @@ module MyApplication
           end
 
           private
+
           def rabbit_pool
             @@connection_pool ||= create
           end

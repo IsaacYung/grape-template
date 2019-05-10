@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module API
     class Health < Grape::API
@@ -5,7 +7,7 @@ module MyApplication
 
       resource :status do
         get do
-          status = OpenStruct.new({ status: :ok })
+          status = OpenStruct.new(status: :ok)
 
           present status, with: Presenters::Health
         end

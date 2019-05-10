@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 
 ENV['RACK_ENV'] ||= 'test'
 Encoding.default_external = 'UTF-8'
@@ -39,7 +39,7 @@ require 'bunny-mock'
 require 'statsd-instrument'
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
-require File.expand_path('../../boot', __FILE__)
+require File.expand_path('../boot', __dir__)
 require 'json_helper'
 
 RSpec.configure do |config|

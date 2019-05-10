@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 
+require File.expand_path('boot', __dir__)
 
-require File.expand_path('../boot', __FILE__)
-
-$LOAD_PATH.unshift File.expand_path '..', __FILE__
+$LOAD_PATH.unshift File.expand_path __dir__
 
 # require 'newrelic_rpm'
 # require 'new_relic/rack/agent_hooks'

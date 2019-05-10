@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Config
     module RabbitMQ
@@ -9,7 +11,7 @@ module MyApplication
 
           def config
             config = {
-              topic:  'my_application',
+              topic: 'my_application',
               queues: @@queues
             }
 
@@ -35,14 +37,17 @@ module MyApplication
           end
 
           def queue(name:, consumer:, routing_key:, condition: true)
-            @@queues << {
-              name: name,
-              consumers: [consumer].freeze,
-              routing_key: routing_key
-            } if condition
+            if condition
+              @@queues << {
+                name: name,
+                consumers: [consumer].freeze,
+                routing_key: routing_key
+              }
+            end
           end
 
           private
+
           def config_queues(channel, config)
             topic = channel.topic config[:topic], durable: true
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Consumers
     class Listener < MyApplication::Config::RabbitMQ::Queue

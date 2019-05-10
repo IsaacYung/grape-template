@@ -1,4 +1,6 @@
-ROOT = Pathname.new(File.expand_path('../', __FILE__))
+# frozen_string_literal: true
+
+ROOT = Pathname.new(File.expand_path(__dir__))
 require_relative 'config/log'
 extend MyApplication::Config::Log
 

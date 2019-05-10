@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Producers
     class SampleProducer < BaseProducer

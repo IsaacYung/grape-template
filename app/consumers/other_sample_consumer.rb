@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MyApplication
   module Consumers
     class OtherSampleConsumer < BaseConsumer
@@ -10,7 +12,7 @@ module MyApplication
 
       def execute(payload, _routing_key)
         account = JSON.parse(payload, symbolize_names: true)
-        logger.info "routing_key = other.sample.created"
+        logger.info 'routing_key = other.sample.created'
 
         StatsD.increment 'other.sample.created.success'
       end
